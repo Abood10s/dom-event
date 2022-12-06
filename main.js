@@ -1,7 +1,9 @@
-let input = document.getElementById("inputclr");
-let button = document.getElementById("button");
-let paint = document.getElementById("colored");
-let hexaCodes = "0123456789ABCDEF";
+const input = document.getElementById("inputclr");
+const button = document.getElementById("button");
+const paint = document.getElementById("colored");
+const hexaCodes = "0123456789ABCDEF";
+
+// getting random color function
 
 function getRandom(colors) {
   let splitted = colors.split("");
@@ -11,6 +13,20 @@ function getRandom(colors) {
   }
   return color;
 }
+
+//  Random Color on ** hover **
+
+const hoverInterval = setInterval(() => {
+  paint.style.backgroundColor = `#${getRandom(hexaCodes)}`;
+}, 500);
+
+paint.addEventListener("mouseover", (e) => {
+  hoverInterval;
+});
+paint.addEventListener("mouseout", (e) => {
+  clearInterval(hoverInterval);
+  paint.style.backgroundColor = "transparent";
+});
 
 // input Event
 
