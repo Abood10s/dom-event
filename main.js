@@ -1,6 +1,8 @@
 const input = document.getElementById("inputclr");
 const button = document.getElementById("button");
 const paint = document.getElementById("colored");
+const sign = document.getElementById("sign");
+
 const hexaCodes = "0123456789ABCDEF";
 
 // getting random color function
@@ -32,6 +34,11 @@ paint.addEventListener("mouseout", (e) => {
 
 input.addEventListener("input", (e) => {
   paint.style.backgroundColor = `#${e.target.value}`;
+  if (e.target.value.includes("#")) {
+    sign.style.display = "block";
+  } else {
+    sign.style.display = "none";
+  }
 });
 
 // Button event
