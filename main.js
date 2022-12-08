@@ -16,29 +16,10 @@ function getRandom(colors) {
   return color;
 }
 
-//  Random Color on ** hover **
-
-const hoverInterval = setInterval(() => {
-  paint.style.backgroundColor = `#${getRandom(hexaCodes)}`;
-}, 500);
-
-paint.addEventListener("mouseover", (e) => {
-  hoverInterval;
-});
-paint.addEventListener("mouseout", (e) => {
-  clearInterval(hoverInterval);
-  paint.style.backgroundColor = "transparent";
-});
-
 // input Event
 
 input.addEventListener("input", (e) => {
-  paint.style.backgroundColor = `#${e.target.value}`;
-  if (e.target.value.includes("#")) {
-    sign.style.display = "block";
-  } else {
-    sign.style.display = "none";
-  }
+  paint.style.backgroundColor = `${e.target.value}`;
 });
 
 // Button event
@@ -46,4 +27,15 @@ input.addEventListener("input", (e) => {
 button.addEventListener("click", () => {
   input.value = getRandom(hexaCodes);
   paint.style.backgroundColor = `#${getRandom(hexaCodes)}`;
+});
+
+// set interval
+let theinterval;
+paint.addEventListener("mouseover", () => {
+  theinterval = setInterval(() => {
+    paint.style.backgroundColor = `#${getRandom(hexaCodes)}`;
+  }, 500);
+});
+paint.addEventListener("mouseout", () => {
+  clearInterval(theinterval);
 });
